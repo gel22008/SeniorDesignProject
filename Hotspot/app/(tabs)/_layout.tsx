@@ -1,37 +1,71 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import { Image } from 'react-native';
+import React from 'react'
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabsLayout = () => {
   return (
     <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
+        // Set the initial route name to "dining"
+        initialRouteName="dining"
+    >
+        <Tabs.Screen
+        name="dining"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          title: 'Dining',
+          tabBarShowLabel: true,
+          headerShown: false,
+          tabBarIcon: ({color}) => (
+            <Image
+            //   source={}
+              style={{width: 24, height: 24, tintColor: color}}
+            />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="chat"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+          title: 'Chat',
+          tabBarShowLabel: true,
+          headerShown: false,
+          tabBarIcon: ({color}) => (
+            <Image
+            //   source={}
+              style={{width: 24, height: 24, tintColor: color}}
+            />
           ),
         }}
-      />
+        />
+      <Tabs.Screen
+        name="summary"
+        options={{
+          title: 'Summary',
+          tabBarShowLabel: true,
+          headerShown: false,
+          tabBarIcon: ({color}) => (
+            <Image
+            //   source={}
+              style={{width: 24, height: 24, tintColor: color}}
+            />
+          ),
+        }}
+        />
+        <Tabs.Screen
+        name="settings"
+        options={{
+          title: 'Settings',
+          tabBarShowLabel: true,
+          headerShown: false,
+          tabBarIcon: ({color}) => (
+            <Image
+            //   source={}
+              style={{width: 24, height: 24, tintColor: color}}
+            />
+          ),
+        }}
+        />
     </Tabs>
-  );
+  )
 }
+
+export default TabsLayout
